@@ -1,0 +1,149 @@
+1. Clean code is readable, easy to maintain and efficient. Clean code is important when developing large-scale and complex applications as well as for when working with others in a team.
+
+2. I think a great example would be in aviation. I am not informed as to how much software influence there is in the flight of a plane but I know auto-pilot is heavily influenced by software. Also Toyotas example brought to light that it is not only in automation where software influences are found but in firmware too. Imagine a similar example where the firmware controlling some of the planes core functions and fail safes were to be coded poorly. You could experience hundred of death and maybe thousands if a plane where to crash into a crowded area. If control was taken out of the pilots hands unintentionally and example would be the plane accelerating on the descend while the plane is uncontrollably forcing itself left towards a large building. I know the aviation industry is heavily regulated and my knowledge on it is not enough to speculate with accuracy but in a hypothetical case where the same situation at Toyota was emulated, lets say with a Boeing, things could go incredibly wrong.
+
+3. No its not
+- Naming conventions are not employed
+- Indentation doesn’t make it readable
+- Not self-documenting / over-commented
+```
+FUNCTION convertTemperature(temperature, format)               
+ IF format = "F" THEN                    
+  SET convertedTemperature to (temperature−32) * (5/9)       
+  PRINT convertedTemparature                       
+ ELSE IF format = "C" THEN            
+  SET convertedTemeperature to temperature * 1.8000 + 32.00   
+  PRINT convertedTemperature                      
+ END IF
+END FUNCTION
+```
+
+4. Yes it is, but I could be wrong, I’m not sure if the do not abbreviate names of variables rule applies to naming functions.
+
+5. 
+a) To me this looks fine, I could make a function called handlePayments for the codeine between the if statements but it seems as if it makes the code more chunky, messy and less clean?
+```
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
+
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
+   ELSE IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+       PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
+   END IF
+END FUNCTION  
+```
+
+b) 
+```
+FUNCTION checkoutBook(book, guest)
+ IF guest.accountActive AND NOT(guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN
+     APPEND book to guest.books
+     SET book.status to "Checked Out"
+     PRINT "Your books have been issued."
+ ELSE
+     PRINT "Unable to check out book."
+ END IF
+END FUNCTION 
+```
+
+c) 
+```
+CLASS BankAccount
+
+ FUNCTION displayBalance()
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION depositMoney(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdrawMoney(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+
+ FUNCTION attemptCreditCardOffer()
+     IF NOT(customer.hasCreditCard) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+ FUNCTION attemptCheckingAccountOffer()
+     IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+
+ ....
+ ....
+ ....
+
+END
+```
+
+Programming Questions:
+
+6. 
+```
+function square(integerArray){
+	var total = 0;
+	for(i=0; i < integerArray.length; i++){
+		total += integerArray[i];
+	}
+
+	if(Math.sqrt(total) % 1 === 0){
+		 return Math.sqrt(total);
+	}else {
+		return total;
+	}
+}
+```
+
+7.
+```
+function duplicate(integerArray){
+	var checkingValue = null;
+
+	for (var i = 0; i < integerArray.length; i++) {
+		checkingValue = integerArray[i];
+		for (var j = i+1; j < integerArray.length; j++) {
+			if(checkingValue === integerArray[j]){
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+```
+
+Extra Credits
+
+8. 
+```
+function anagram(stringOne, stringTwo){
+	var arrayOne = stringOne.split('');
+	var arrayTwo = stringTwo.split('');
+
+	var isAnagram = false;
+
+	for (var i = 0; i < arrayOne.length; i++) {
+		isAnagram = false;
+		for (var j = 0; j < arrayTwo.length; j++) {
+			if(arrayOne[i] === arrayTwo[j]){
+				isAnagram = true;
+			}
+		}
+		if(isAnagram === false){
+			return false
+		}
+	}
+
+	return true;
+}
+```
