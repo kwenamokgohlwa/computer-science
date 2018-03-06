@@ -104,3 +104,66 @@ function retrieveHash(publication, publicationDate){
 	}
 	return "Newspaper not found"
 }
+
+//Stacks and Queues: Question 1
+
+function reverse(original){
+	var originalArray = original.split('');
+	var reverseArray = [];
+	for(i = originalArray.length - 1; i >= 0; i--){
+		reverseArray.push(originalArray[i]);
+	}
+	return reverseArray.join('');
+}
+
+//Stacks and Queues: Question 2
+
+
+class Stack {
+  constructor(){
+    this.myArray = [];
+  }
+
+  push(element){
+    this.myArray[this.myArray.length] = element;
+  }
+
+  pop(){
+    let newArray = [this.myArray.length -1];
+    var temp;
+    for(let i = 0; i < this.myArray.length; i++){
+      if(i === this.myArray.length -1){
+        temp = this.myArray[i];
+        break;
+      }
+      newArray[i] = this.myArray[i];
+    }
+    this.myArray = newArray;
+    return temp;
+  }
+}
+
+//Stacks and Queues: Question 3
+
+class Queue {
+  constructor(){
+    this.myArray = [];
+  }
+
+  enqueue(element){
+    this.myArray[this.myArray.length] = element;
+  }
+
+  dequeue(){
+    var temp = this.myArray[0];
+    var newArray = [];
+    for(i = 0; i < myArray.length; i++){
+      if(i === 0){
+        break;
+      }
+      newArray[i] = this.myArray[i];
+    }
+    this.myArray = newArray[i];
+    return temp;
+  }
+}

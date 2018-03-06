@@ -1,0 +1,72 @@
+1. The main difference is in the order in which the data is processed. A Stack is processed with a Last-In-First-Out approach and a Queue is processed with a First-In-First-Out.
+
+2. They enable engineers to rank tasks, create an order of operations and support system functions. These data structures are two types of prioritized entries.
+
+3. UNDO will be a Stack because you’d want to get the last processed action to be the first to be processed for removal. REDO will also be a Stack because you would want the last UNDO processed instead of the first UNDO processed item so the prioritized flow would be from last to first making it a LIFO.
+
+Programming Questions:
+
+1. 
+```
+function reverse(original){
+	var originalArray = original.split('');
+	var reverseArray = [];
+	for(i = originalArray.length - 1; i >= 0; i--){
+		reverseArray.push(originalArray[i]);
+	}
+	return reverseArray.join('');
+}
+```
+
+2. 
+```
+class Stack {
+  constructor(){
+    this.myArray = [];
+  }
+
+  push(element){
+    this.myArray[this.myArray.length] = element;
+  }
+
+  pop(){
+    let newArray = [this.myArray.length -1];
+    var temp;
+    for(let i = 0; i < this.myArray.length; i++){
+      if(i === this.myArray.length -1){
+        temp = this.myArray[i];
+        break;
+      }
+      newArray[i] = this.myArray[i];
+    }
+    this.myArray = newArray;
+    return temp;
+  }
+}
+```
+
+3.
+```
+class Queue {
+  constructor(){
+    this.myArray = [];
+  }
+
+  enqueue(element){
+    this.myArray[this.myArray.length] = element;
+  }
+
+  dequeue(){
+    var temp = this.myArray[0];
+    var newArray = [];
+    for(i = 0; i < myArray.length; i++){
+      if(i === 0){
+        break;
+      }
+      newArray[i] = this.myArray[i];
+    }
+    this.myArray = newArray[i];
+    return temp;
+  }
+}
+```
