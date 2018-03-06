@@ -46,3 +46,13 @@ function anagram(stringOne, stringTwo){
 
 	return true;
 }
+
+function searchPhoneBook(entry){
+	var phoneBook = [{name: "Kwena", number: "+27719264882"}];
+	for(i = 0; i < phoneBook.length; i++){
+		if(entry === phoneBook[i].name){
+			return phoneBook[i];
+		}
+	}
+	return "Entry not found";
+}

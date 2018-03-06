@@ -1,0 +1,51 @@
+1. It helps programmers develop algorithms and is a way to express code without a particular languages syntax which is meant to be more readable to humans rather than machines. 
+
+2. It will not run on a computer, on build you will get a syntax error.
+
+Programming Assignment
+
+1. 
+```
+FUNCTION findGreater(firstNumber, secondNumber)
+   IF firstNumber is greater than or equal to secondNumber
+      PRINT firstNumber
+   ELSE
+      PRINT secondNumber
+   END IF
+END FUNCTION
+```
+
+2.
+```
+FUNCTION printHundred()
+   FOR each integer in 100
+      PRINT integer
+   END FOR
+END FUNCTION
+	
+```
+
+3.
+```
+FUNCTION searchPhoneBook(entry)
+   FOR each phone in phoneBook
+      IF entry = phone.name THEN
+         RETURN phone
+      END IF
+   END FOR
+   RETURN “Entry not found”
+END FUNCTION
+```
+
+4. 
+```
+function searchPhoneBook(entry){
+	var phoneBook = [{name: "Kwena", number: "+27719264882"}]; //Test Data
+	for(i = 0; i < phoneBook.length; i++){
+		if(entry === phoneBook[i].name){
+			return phoneBook[i];
+		}
+	}
+	return "Entry not found";
+}
+```
