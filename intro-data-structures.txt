@@ -1,0 +1,48 @@
+1. 
+a) 
+```
+INIT rideLine to an empty array
+SET rideLine[FIRST INDEX] to “Vivian”
+SET rideLine[SECOND INDEX] to “Ava”
+SET rideLine[THIRD INDEX] to “Josh”
+SET rideLine[FOURTH INDEX] to “Patrick”
+SET rideLine[FIFTH INDEX] to “Mike”
+```
+
+b) 
+```
+APPEND rideLine with “Mike”
+```
+
+c) 
+```
+FUNCTION findRider(riderName)
+   RETURN index of riderName
+END FUNCTION
+
+CALL findRider with “Josh” as an an argument
+```
+
+d) 
+```
+CALL findRider with “Emily” as an argument //Return -1 if not found
+```
+
+e) 
+```
+ADD “Melissa” into rideLine at findRider(“Ava”) + 1 	//SPLICE(findRider(“Ava”) + 1, 0, “Melissa”) Can be replaced with ADD, I just used it to show that I know how to implement it with code
+SET x = findRider(“Ava”)
+Set y = findRider(“Melissa”)
+SET placeHolder to rideLine[x]
+rideLine[y] = rideLine[x]
+rideLine[x] = placeHolder
+```
+
+f) 
+```
+DELETE redLine at findRider(“Patrick”) //SPLICE(findRider(“Patrick”, 1)
+```
+
+2. Patients at a hospital. For appointments patients are called per prior booking arrangements and for procedures like x-rays patients are called on a first come first serve basis. 
+
+3. It would allow developers to access the information pertaining to each patient so that they are called for the right reason at the correct time or in the correct order ensuring that there is efficiency and patient satisfaction.
