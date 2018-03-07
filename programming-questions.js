@@ -167,3 +167,60 @@ class Queue {
     return temp;
   }
 }
+
+//Linked Lists
+
+function LinkedList(){
+	this.head = null;
+}
+
+LinkedList.prototype.push = function(element) {
+	var current;
+
+	var node = {
+		value: element,
+		next: null
+	}
+
+	if(!this.head){
+		this.head = node;
+	}else {
+		current = this.head;
+		while(current.next){
+			current = current.next;
+		}
+		current.next = node;
+	}
+}
+
+LinkedList.prototype.removeDuplicates = function() {
+	var previous = this.head;
+	var current = previous.next;
+
+	var nodes = {};
+	nodes[previous.value] = true;
+
+	while(current) {
+		if(!nodes[current.value]) {
+			nodes[current.value] = true;
+			previous = current;
+		}else {
+			previous.next = current.next;
+		}
+		current = current.next;
+	}
+
+LinkedList.prototype.reverse = function() {
+	var previous = null;
+	var current = this.head;
+	var next;
+
+	while(current){
+		next = current.next;
+		current.next = previous;
+		previous = current;
+		current = next;
+	}
+
+	this.head = previous;
+}

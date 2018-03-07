@@ -1,0 +1,72 @@
+1. Spatial locality is the use of data elements within a relatively close storage range of location. It happens when the piece of data requested is not located in the cache and the processor retrieves it from a range of locations. It improves performance by allowing the RAM to retrieve related data like Arrays in one batch, without causing a cache-miss, because it reduces the number of times the processor needs to read from the RAM.
+
+2. A pro is that Linked Lists are dynamically instantiated in independent locations in memory that are not governed by spatial locality meaning that Linked Lists can grow immense in size without requiring rearrangement in physical memory. A con is also related to its lack of spatial locality as well in that it can cause issues like reduced performance for look ups and cache-misses because Linked Lists data elements are not necessarily contiguous. 
+
+3. A linked list is like siblings because they can be born anywhere(no spacial locality) at anytime (dynamic) but they are still related (linked) and come chronologically one after the other (list).
+
+Programming Questions
+
+1. 
+```
+function LinkedList(){
+	this.head = null;
+}
+
+LinkedList.prototype.push = function(element) {
+	var current;
+
+	var node = {
+		value: element,
+		next: null
+	}
+
+	if(!this.head){
+		this.head = node;
+	}else {
+		current = this.head;
+		while(current.next){
+			current = current.next;
+		}
+		current.next = node;
+	}
+}
+```
+
+2. 
+```
+LinkedList.prototype.removeDuplicates = function() {
+	var previous = this.head;
+	var current = previous.next;
+	
+	var nodes = {};
+	nodes[previous.value] = true;
+	
+	while(current) {
+		if(!nodes[current.value]) {
+			nodes[current.value] = true;
+			previous = current;
+		}else {
+			previous.next = current.next;
+		}
+		current = current.next;
+	}
+}
+```
+
+3.
+```
+LinkedList.prototype.reverse = function() {
+	var previous = null;
+	var current = this.head;
+	var next;
+
+	while(current){
+		next = current.next;
+		current.next = previous;
+		previous = current;
+		current = next;
+	}
+
+	this.head = previous;
+}
+```
