@@ -1,0 +1,140 @@
+1. A binary tree is a data structure where each node has up to two child nodes that either point to the left or to the right starting from a single root node.
+
+2. A Heuristic is a guess made by an algorithm at the expense of accuracy in order to solve complex problems. They are best guesses made by engineers.
+
+3. An educated guess is a heuristic where instead of extensive research a person can use what they have observed or learnt in the past.
+
+4. A Depth-First-Search searches a trees nodes by branch by going all the way down and moving up to repeat the process on the next un-search branches until all nodes are reviewed. A Breadth-First-Search searches a trees nodes by rows and once all nodes in a row are reviewed goes down to repeat the process until the tree is completely reviewed. The difference in the DFS prioritizes depth(vertical) in search and BFS prioritizes breath(horizontal) in search.
+
+5. An undirected, a-cyclic, unweighted graph is a graph where edges between nodes are merely connected (ambiguous direction), does not contain any sections which form a cycle or loop with edge connections that don’t have an associated weight.
+
+6. A binary search tree is a tree that is a directed, a-cyclic and unweighted graph.
+
+Programming Questions
+
+1. I first have to create a push function to create a test tree. In the search function of  my class I will have a current value linking the current tree structure. I will then have a while loop that is similar to a push function but is slightly modified to handle a case where the element is equal to the current value in current. // I modified it to return the node being searched for so I can use it in the next question.
+```
+class BinarySearchTree {
+	constructor () {
+		this.root = null;
+	}
+
+	push (element) {
+		var current;
+
+		var node = {
+			value: element,
+			left: null,
+			right: null
+		}
+
+		if (!this.root) {
+			this.root = node;
+		} else {
+			current = this.root;
+
+			while (current) {
+				if (element < current.value) {
+					if (!current.left) {
+						current.left = node;
+						break;
+					} else {
+						current = current.left;
+					}
+				}	else if (element > current.value) {
+					if (!current.right) {
+						current.right = node;
+						break;
+					} else {
+						current = current.right;
+					}
+				} else {
+					break;
+				}
+			}
+		}
+
+	}
+
+	search (element) {
+		var current = this.root;
+
+		while (current) {
+			if (element < current.value) {
+				if (!current.left) {
+					return element + " does not exists";
+				} else {
+					current = current.left;
+				}
+			}	else if (element > current.value) {
+				if (!current.right) {
+					return element + " does not exists";
+				} else {
+					current = current.right;
+				}
+			} else if (element === current.value) {
+				return current;
+			} else {
+				return element + " does not exists"; 
+			}
+		}
+	}
+
+}
+```
+
+2. I sought help from a tutorial on this one. It was in Java but because I have experience coding in Java it was easy to understand it and translate it into JavaScript. Upon research I found that I had to ultimately calculate “distance(x,y)= distance(root, x) + distance(root, y) - 2*(distance(root, LCA(x, y)))” where LCA is the lowest common ancestor between the two numbers. I learnt from the tutorial and used it to create a solution the works with my class.
+```
+	disitanceBetween (n1, n2) {
+		var root = this.root;
+		var node1 = this.search(n1);
+		var node2 = this.search(n2);
+		
+		var x = this.pathLength(root, node1.value) - 1;
+		var y = this.pathLength(root, node2.value) - 1;
+		var LCA = this.findLCA(root, node1.value, node2.value);
+		var LCADistance = this.pathLength(LCA.value) - 1;
+		return (x + y) -2 * LCADistance;
+	}
+	
+	pathLength (root, n1) {
+		var node1 = this.search(n1);
+
+		if (root) {
+			var x = 0;
+			if ((root.value === node1.value) || (x = this.pathLength(root.left, node1.value)) > 0 || (x = this.pathLength(root.right, node1.value)) > 0 ) {
+				return x + 1;
+			}
+			return 0;
+		}
+		return 0;
+	}
+
+	findLCA (root, n1,n2) {
+		var node1 = this.search(n1);
+		var node2 = this.search(n2);
+		
+		var left;
+		var right;
+
+		if (root) {
+			if (root.value === node1.value || root.value === node2.value) {
+				return root;
+			}
+			left = this.findLCA(root.left, node1.value, node2.value);
+			right = this.findLCA(root.right, node1.value, node2.value);
+
+			if (left && right) {
+				return root;
+			}
+			if (left){
+				return left;
+			}
+			if (right) {
+				return right;
+			}
+		}
+		return null;
+	}
+  
+```

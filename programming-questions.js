@@ -224,3 +224,125 @@ LinkedList.prototype.reverse = function() {
 
 	this.head = previous;
 }
+
+//Trees and Graphs
+
+class BinarySearchTree {
+	constructor () {
+		this.root = null;
+	}
+
+	push (element) {
+		var current;
+
+		var node = {
+			value: element,
+			left: null,
+			right: null,
+		}
+
+		if (!this.root) {
+			this.root = node;
+		} else {
+			current = this.root;
+
+			while (current) {
+				if (element < current.value) {
+					if (!current.left) {
+						current.left = node;
+						break;
+					} else {
+						current = current.left;
+					}
+				}	else if (element > current.value) {
+					if (!current.right) {
+						current.right = node;
+						break;
+					} else {
+						current = current.right;
+					}
+				} else {
+					break;
+				}
+			}
+		}
+
+	}
+
+	search (element) {
+		var current = this.root;
+
+		while (current) {
+			if (element < current.value) {
+				if (!current.left) {
+					return element + " does not exists";
+				} else {
+					current = current.left;
+				}
+			}	else if (element > current.value) {
+				if (!current.right) {
+					return element + " does not exists";
+				} else {
+					current = current.right;
+				}
+			} else if (element === current.value) {
+				return current;
+			} else {
+				return element + " does not exists";
+			}
+		}
+	}
+
+	disitanceBetween (n1, n2) {
+		var root = this.root;
+		var node1 = this.search(n1);
+		var node2 = this.search(n2);
+
+		var x = this.pathLength(root, node1.value) - 1;
+		var y = this.pathLength(root, node2.value) - 1;
+		var LCA = this.findLCA(root, node1.value, node2.value);
+		var LCADistance = this.pathLength(LCA.value) - 1;
+		return (x + y) -2 * LCADistance;
+	}
+
+	pathLength (root, n1) {
+		var node1 = this.search(n1);
+
+		if (root) {
+			var x = 0;
+			if ((root.value === node1.value) || (x = this.pathLength(root.left, node1.value)) > 0 || (x = this.pathLength(root.right, node1.value)) > 0 ) {
+				return x + 1;
+			}
+			return 0;
+		}
+		return 0;
+	}
+
+	findLCA (root, n1,n2) {
+		var node1 = this.search(n1);
+		var node2 = this.search(n2);
+
+		var left;
+		var right;
+
+		if (root) {
+			if (root.value === node1.value || root.value === node2.value) {
+				return root;
+			}
+			left = this.findLCA(root.left, node1.value, node2.value);
+			right = this.findLCA(root.right, node1.value, node2.value);
+
+			if (left && right) {
+				return root;
+			}
+			if (left){
+				return left;
+			}
+			if (right) {
+				return right;
+			}
+		}
+		return null;
+	}
+
+}
