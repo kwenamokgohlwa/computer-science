@@ -1,0 +1,46 @@
+1. 
+- Make coffee
+```
+GET mug, coffee, milk, water AND sugar
+BOIL water 
+ADD two teaspoons of coffee AND sugar IN mug
+FILL 3/4 of mug WITH boiled water
+FILL 1/4 of mug WITH cold milk
+```
+
+- Washing Dishes
+```
+FILL sink WITH water
+STACK dirty dishes 
+FOR each dirty dish in stack
+   WASH dish WITH soup
+   ADD washed dish to rack
+END FOR
+
+WAIT for dishes to dry
+
+FOR each dry dish in rack
+   PACK dish in its appropriate location
+END FOR
+```
+
+- Chopping a Tree
+```
+GET axe
+REPEAT 
+   CHOP tree with axe
+UNTIL tree falls down
+```
+
+2. 
+Uber:
+Ubers algorithm keeps drivers coming back to their platform by doing things like rate increases at key times such as peak our traffic when there are more riders. The platform controls supply and demand very well.
+
+Amazon:
+Amazons algorithm matches your new purchases on what you are about to purchase with items you would most probably want coupled with it by drawing upon data from trends previous buyers. 
+
+Facebook:
+Facebooks algorithm suggests people you may know quite accurately. As you are connected with more people you know it gets more accurate.
+
+3. 
+What makes an algorithm efficient is the amount of computational resources it uses. To determine efficiency we need to first determine the measure of efficiency e.g. speed, memory usage, performance benchmarks. So an efficient algorithm is when its resource consumption is at or below some acceptable level i.e. it will run at a reasonable amount of time. An inefficient algorithm is one that consumes more that the acceptable level and runs longer than a reasonable amount of time.
