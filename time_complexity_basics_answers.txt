@@ -1,0 +1,24 @@
+1. Time complexity in relation to algorithms is the metric used to calculate its efficiency. A time complexity is a function representing the runtime it takes for a certain data set or input size to execute.
+
+2. Runtime is sometimes used interchangeably with time complexity but it is the physical time duration of an algorithm. 
+
+3. It is calculated using Big O notation of the Time Complexity O(f(n)). The upper bound function as the input size grows, the worst case scenario.
+
+4. 
+1 - Constant Growth Rate
+2 - Logarithmic Growth Rate
+3 - Linear Growth Rate
+4 - Log-Linear Growth Rate
+5 - Quadratic Growth Rate
+6 - Exponential Growth Rate
+7 - * Factorial Growth Rate => O(n!)
+
+5. Writing an email destined for 1000 people message list is a Constant Growth Rate example and for the server sending them it is a Linear Growth Rate example.
+
+6. O(n)
+
+7. O(n^2)
+
+8. O(2^n)
+
+9. Question 6 => O(n)
