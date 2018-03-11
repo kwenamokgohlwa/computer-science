@@ -1,0 +1,48 @@
+1. A TSA officer searching each person at a boarding pass for a specific name that has been flagged as wanted who is due to fly.
+
+2. Searching for a boarding gate at an airport.
+
+3. 6 iterations.
+
+4. 3 iterations.
+
+5. I would choose a linear search because it would require me to first sort the million items then search them if I chose to binary search which would be a less efficient algorithm that uses more resources.
+
+6. I would choose a binary search because the list is sorted and I won’t have to go through that first so using the more efficient binary search is a good case for this.
+
+Programming Questions
+
+1. 
+```
+function searchDictionary (dictionary, word) {
+	var low = 0;
+	var high = dictionary.length;
+	
+	while (low <= high) {
+		var mid = Math.floor((low + high) / 2);
+		if (dictionary[mid] > word) {
+			high = mid - 1;
+		} else if (dictionary[mid] < word) {
+			low = mid + 1;
+		} else {
+			return mid;
+		}
+	}
+	
+	return "not found";
+}
+```
+
+2.
+```
+function netGoldfish (fishTank, goldfish) {
+	var result = null;
+	for (var i = 0; i < fishTank.length; i++) {
+		if (fishTank[i] === goldfish) {
+			result = i;
+			break
+		}
+	}
+	return result;
+}
+```

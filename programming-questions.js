@@ -346,3 +346,34 @@ class BinarySearchTree {
 	}
 
 }
+
+//Searching
+
+function searchDictionary (dictionary, word) {
+	var low = 0;
+	var high = dictionary.length;
+
+	while (low <= high) {
+		var mid = Math.floor((low + high) / 2);
+		if (dictionary[mid] > word) {
+			high = mid - 1;
+		} else if (dictionary[mid] < word) {
+			low = mid + 1;
+		} else {
+			return mid;
+		}
+	}
+
+	return "not found";
+}
+
+function netGoldfish (fishTank, goldfish) {
+	var result = null;
+	for (var i = 0; i < fishTank.length; i++) {
+		if (fishTank[i] === goldfish) {
+			result = i;
+			break
+		}
+	}
+	return result;
+}
