@@ -377,3 +377,37 @@ function netGoldfish (fishTank, goldfish) {
 	}
 	return result;
 }
+
+//Sorting
+
+function selectionSort (collection) {
+	for (var i = 0; i < collection.length - 1; i++) {
+		var minIndex = i;
+		for (var j = i + 1; j < collection.length) {
+			if (collection[j] < collection[minIndex]) {
+				minIndex = j;
+			}
+		}
+		var temp = collection[i];
+		collection[i] = collection[minIndex];
+		collection[minIndex] = temp;
+	}
+	return collection;
+}
+
+function bubbleSort (collection) {
+	do {
+		var swapped = false
+		for (var i = 0; collection.length - 1; i++) {
+			if (collection[i] > collection[i + 1]) {
+				var temp = collection[i];
+				collection[i] = collection[i + 1];
+				collection[i + 1] = temp;
+				swapped = true;
+			}
+		}
+	}
+	while (swapped === false);
+
+	return collection;
+}
