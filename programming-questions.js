@@ -411,3 +411,21 @@ function bubbleSort (collection) {
 
 	return collection;
 }
+
+function bubbleSort (collection) {
+	var swapped;
+	do {
+		swapped = false;
+		for (var i = 0; i < collection.length - 1; i++) {
+			if (collection[i] > collection[i + 1]) {
+				var temp = collection[i];
+				collection[i] = collection[i + 1];
+				collection[i + 1] = temp;
+				swapped = true;
+			}
+		}
+	}
+	while (swapped);
+
+	return collection;
+}
